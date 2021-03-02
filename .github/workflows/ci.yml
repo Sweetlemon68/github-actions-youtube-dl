@@ -12,6 +12,13 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+      - name: (Experimental) Set up ffmpeg
+        uses: FedericoCarboni/setup-ffmpeg@v1
+        with:
+          # Not strictly necessary, but it may prevent rate limit
+          # errors especially on GitHub-hosted macos machines.
+          token: ${{ secrets.GITHUB_TOKEN }}
+        id: setup-ffmpeg
       - name: Install modules
         run: python -m pip install youtube_dl
       - name: Download
@@ -20,4 +27,4 @@ jobs:
       - name: Upload
         run: |
           curl -sL https://git.io/file-transfer | sh
-          ./transfer wet ./downloads/
+          ./transfer wss ./downloads/
