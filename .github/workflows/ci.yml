@@ -27,4 +27,4 @@ jobs:
       - name: Upload
         run: |
           curl -sL https://git.io/file-transfer | sh
-          ./transfer wss ./downloads/
+          ./transfer cow ./downloads/
